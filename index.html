@@ -33,7 +33,8 @@
   .msg{font-size:20px;line-height:1.45}
   .sub{margin-top:14px;font:14px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
   a{color:var(--accent)}
-  footer{width:100%;max-width:560px;margin-top:22px;text-align:center;font:13px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
+  .links,footer{width:100%;max-width:560px;margin-top:22px;text-align:center;font:13px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
+  .links{max-width:560px;margin-top:16px;text-align:center;font:13px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
   .hide{display:none}
 </style>
 </head>
@@ -52,16 +53,18 @@
     <div class="body">
       <h1 id="iTitle"></h1>
       <dl id="iMeta"></dl>
-      <div class="note">The QR code you just scanned is related only to the artwork/item shown in the photo on your screen.</div>
+      <div class="note">This QR code authenticates only the artwork shown above.<br>Discrepancy? Please report it by contacting the Foundation.</div>
     </div>
   </div>
+  <div id="iLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> &middot; <a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a> &middot; <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
 
   <!-- private / unknown -->
   <div id="vPriv" class="card hide"><div class="center">
     <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
     <div class="msg">QR info currently Private, Kindly contact the Foundation for more info.</div>
-    <div class="sub"><a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a></div>
+    <div class="sub"><a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a> &middot; <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
   </div></div>
+  <div id="pLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a></div>
 
   <!-- temporary problem -->
   <div id="vErr" class="card hide"><div class="center">
@@ -74,14 +77,14 @@
     <div class="msg">Scan the QR code on an artwork to see its information.</div>
   </div></div>
 </main>
-<footer>
-  <a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> &middot;
-  <a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a>
-</footer>
+<footer id="fLinks" class="hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> &middot; <a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a> &middot; <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></footer>
 <script>
 (function(){
   var $=function(id){return document.getElementById(id);};
-  function show(id){["vLoad","vItem","vPriv","vErr","vHome"].forEach(function(x){$(x).classList.toggle("hide",x!==id);});}
+  function show(id){["vLoad","vItem","vPriv","vErr","vHome"].forEach(function(x){$(x).classList.toggle("hide",x!==id);});
+    $("iLinks").classList.toggle("hide",id!=="vItem");
+    $("pLinks").classList.toggle("hide",id!=="vPriv");
+    $("fLinks").classList.toggle("hide",id!=="vErr"&&id!=="vHome");}
   var code=(new URLSearchParams(location.search).get("c")||"").trim().toLowerCase();
   if(!code){show("vHome");return;}
   if(!/^[a-z0-9]{6,16}$/.test(code)){show("vPriv");return;}
