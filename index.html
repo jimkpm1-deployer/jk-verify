@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Jean Khalifé Foundation</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7NVS656PR"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag("js",new Date());
+gtag("config","G-K7NVS656PR",{send_page_view:false});
+</script>
 <style>
   :root{
     --bg:#f6f3ec;--card:#fffdf8;--ink:#1d1b16;--mute:#6f6a5e;--line:#dcd5c4;--accent:#9a3b2c;
@@ -84,7 +91,9 @@
   function show(id){["vLoad","vItem","vPriv","vErr","vHome"].forEach(function(x){$(x).classList.toggle("hide",x!==id);});
     $("iLinks").classList.toggle("hide",id!=="vItem");
     $("pLinks").classList.toggle("hide",id!=="vPriv");
-    $("fLinks").classList.toggle("hide",id!=="vErr"&&id!=="vHome");}
+    $("fLinks").classList.toggle("hide",id!=="vErr"&&id!=="vHome");
+    var res={vItem:"public",vPriv:"private",vErr:"error",vHome:"home"}[id];
+    if(res){try{gtag("event","qr_scan",{qr_code:code||"(none)",result:res,page_location:location.origin+location.pathname});}catch(e){}}}
   var code=(new URLSearchParams(location.search).get("c")||"").trim().toLowerCase();
   if(!code){show("vHome");return;}
   if(!/^[a-z0-9]{6,16}$/.test(code)){show("vPriv");return;}
