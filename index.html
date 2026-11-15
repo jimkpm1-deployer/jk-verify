@@ -93,8 +93,8 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
     $("pLinks").classList.toggle("hide",id!=="vPriv");
     $("fLinks").classList.toggle("hide",id!=="vErr"&&id!=="vHome");
     var res={vItem:"public",vPriv:"private",vErr:"error",vHome:"home"}[id];
-    if(res){try{gtag("event","qr_scan",{qr_code:code||"(none)",result:res,item_title:(res==="public"?itemTitle:"").slice(0,100),page_location:location.origin+location.pathname});}catch(e){}}}
-  var itemTitle="";
+    if(res){try{gtag("event","qr_scan",{qr_code:code||"(none)",result:res,item_title:(res==="public"?itemTitle:"").slice(0,100),item_medium:(res==="public"&&itemMeta.medium?String(itemMeta.medium):"").slice(0,100),item_size:(res==="public"&&itemMeta.size?String(itemMeta.size):"").slice(0,100),item_year:(res==="public"&&itemMeta.year?String(itemMeta.year):"").slice(0,100),page_location:location.origin+location.pathname});}catch(e){}}}
+  var itemTitle="",itemMeta={};
   var code=(new URLSearchParams(location.search).get("c")||"").trim().toLowerCase();
   if(!code){show("vHome");return;}
   if(!/^[a-z0-9]{6,16}$/.test(code)){show("vPriv");return;}
@@ -105,7 +105,7 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
   }).then(function(d){
     if(!d)return;
     if(!d||typeof d!=="object"||!d.title){show("vPriv");return;}
-    itemTitle=String(d.title);
+    itemTitle=String(d.title);itemMeta={year:d.year,medium:d.medium,size:d.size};
     $("iTitle").textContent=d.title;
     document.title=d.title+" — Jean Khalifé Foundation";
     var rows=[["Year",d.year],["Medium",d.medium],["Size",d.size]],meta=$("iMeta");
