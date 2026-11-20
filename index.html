@@ -23,8 +23,8 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
     --btn:linear-gradient(180deg,#e9dfca 0%,#d5c7aa 47%,#c3b392 53%,#d9ccb1 100%);
     --brass:linear-gradient(180deg,#d9c59b 0%,#bea676 46%,#a98f61 54%,#c8b083 100%);--brass-ink:#1a160f;
   }
-  @media (prefers-color-scheme:dark){
-    :root{--bg:#0d0c0a;--card:#1a1814;--ink:#ece7d9;--mute:#a49e8e;--line:#34302a;--accent:#d9806e;
+  /* dark colors always (Jim, session 3i) */
+  :root{--bg:#0d0c0a;--card:#1a1814;--ink:#ece7d9;--mute:#a49e8e;--line:#34302a;--accent:#d9806e;
       --metal:linear-gradient(180deg,#3a352c 0%,#2a2620 46%,#221f19 54%,#2e2a23 100%);
       --brush:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0,rgba(255,255,255,.025) 1px,rgba(0,0,0,0) 2px,rgba(0,0,0,.05) 3px);
       --panel:linear-gradient(180deg,#2b2721 0%,#211e19 30%,#181612 100%);
@@ -32,7 +32,7 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
       --plate:linear-gradient(180deg,#1c1a15 0%,#26231c 100%);
       --btn:linear-gradient(180deg,#4a443a 0%,#38332b 47%,#2c2822 53%,#3c372f 100%);
       --brass:linear-gradient(180deg,#ad966a 0%,#937c53 46%,#7f6a45 54%,#9c855b 100%);--brass-ink:#14110b;}
-  }
+  html{color-scheme:dark}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--ink)}
   body{font-family:Georgia,"Times New Roman",serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 16px 32px}
@@ -59,6 +59,10 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
   dd{flex:1}
   /* authentication note: raised metal plate with terracotta edge */
   .note{margin-top:16px;padding:12px 14px;border-left:4px solid var(--accent);border-radius:0 8px 8px 0;background:var(--metal);font:14px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;border-top:1px solid rgba(0,0,0,.1);border-right:1px solid rgba(0,0,0,.1);border-bottom:1px solid rgba(0,0,0,.14);box-shadow:inset 0 1px 0 var(--hl),2px 3px 6px var(--shd-soft)}
+  .note p+p,.note ul+p{margin-top:8px}
+  .note ul{margin:4px 0 0 18px;padding:0}
+  .note li{margin-top:3px}
+  .note strong{font-weight:700}
   .center{text-align:center;padding:30px 22px}
   /* lock embossed in a round metal medallion */
   .lock{width:62px;height:62px;padding:12px;margin:0 auto 16px;color:var(--accent);border-radius:50%;background:var(--metal);border:1px solid rgba(0,0,0,.2);box-shadow:inset 0 1px 0 var(--hl),inset 0 -2px 3px rgba(0,0,0,.12),3px 4px 7px var(--shd)}
@@ -90,7 +94,7 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
     <div class="body">
       <h1 id="iTitle"></h1>
       <dl id="iMeta"></dl>
-      <div class="note">This QR code authenticates the artwork shown above only as originally documented, unaltered.<br>Suspect an alteration or discrepancy? Please report it by contacting the Foundation.</div>
+      <div class="note"><p><strong>Electronic verification only.</strong> This QR code is registered by the Jean Khalifé Foundation for the artwork shown above, as originally documented. It is not a Certificate of Authenticity and does not replace the printed certificate.</p><p>Authenticity requires both:</p><ul><li>the QR codes on the printed certificate and on the back of the painting open this same page;</li><li>the painting matches the photos on the certificate and above, with no alteration, overpainting or restoration changing its original appearance.</li></ul><p>Suspect an alteration or discrepancy? Please contact the Foundation.</p></div>
     </div>
   </div>
   <div id="iLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> <a href="mailto:jeankhalife.art@gmail.com">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
