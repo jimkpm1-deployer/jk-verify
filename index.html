@@ -15,33 +15,57 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
 <style>
   :root{
     --bg:#f6f3ec;--card:#fffdf8;--ink:#1d1b16;--mute:#6f6a5e;--line:#dcd5c4;--accent:#9a3b2c;
+    --metal:linear-gradient(180deg,#fffefa 0%,#f3eee3 46%,#e9e2d2 54%,#f7f3eb 100%);
+    --brush:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0,rgba(255,255,255,.35) 1px,rgba(0,0,0,0) 2px,rgba(0,0,0,.015) 3px);
+    --panel:linear-gradient(180deg,#fffefa 0%,#f4efe5 30%,#ece5d6 100%);
+    --hl:rgba(255,255,255,.85);--shd:rgba(29,27,22,.30);--shd-soft:rgba(29,27,22,.16);
+    --plate:linear-gradient(180deg,#f1ebdf 0%,#e6dece 100%);
+    --btn:linear-gradient(180deg,#fbf6ec 0%,#ece3cf 47%,#ddd1b6 53%,#efe6d2 100%);
   }
   @media (prefers-color-scheme:dark){
-    :root{--bg:#16150f;--card:#201e17;--ink:#ece7d9;--mute:#a49e8e;--line:#3a3629;--accent:#d9806e;}
+    :root{--bg:#16150f;--card:#201e17;--ink:#ece7d9;--mute:#a49e8e;--line:#3a3629;--accent:#d9806e;
+      --metal:linear-gradient(180deg,#3a352c 0%,#2a2620 46%,#221f19 54%,#2e2a23 100%);
+      --brush:repeating-linear-gradient(90deg,rgba(255,255,255,0) 0,rgba(255,255,255,.025) 1px,rgba(0,0,0,0) 2px,rgba(0,0,0,.05) 3px);
+      --panel:linear-gradient(180deg,#36322a 0%,#2a2620 30%,#221f19 100%);
+      --hl:rgba(255,255,255,.12);--shd:rgba(210,203,186,.24);--shd-soft:rgba(210,203,186,.12);
+      --plate:linear-gradient(180deg,#1c1a15 0%,#26231c 100%);
+      --btn:linear-gradient(180deg,#4a443a 0%,#38332b 47%,#2c2822 53%,#3c372f 100%);}
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--ink)}
   body{font-family:Georgia,"Times New Roman",serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:0 16px 32px}
-  header{width:100%;max-width:560px;text-align:center;padding:26px 0 16px;border-bottom:1px solid var(--line)}
-  header .org{font:600 12px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
-  header .nm{font-size:22px;margin-top:4px;letter-spacing:.02em}
-  main{width:100%;max-width:560px;margin-top:18px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  .photo{display:block;width:100%;max-height:70vh;object-fit:contain;background:#00000008}
+  /* engraved header on a brushed band */
+  header{width:100%;max-width:560px;text-align:center;padding:22px 0 16px;margin-top:14px;border-radius:12px;background:var(--brush),var(--panel);border:1px solid rgba(0,0,0,.14);box-shadow:inset 0 1px 0 var(--hl),inset 0 -1px 0 rgba(0,0,0,.08),3px 4px 8px var(--shd-soft)}
+  header .org{font:600 12px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);text-shadow:0 1px 0 var(--hl)}
+  header .nm{font-size:22px;margin-top:4px;letter-spacing:.02em;text-shadow:0 1px 0 var(--hl),0 -1px 0 rgba(0,0,0,.12)}
+  main{width:100%;max-width:560px;margin-top:16px}
+  /* main card: brushed metal panel, raised, 45-degree shadow */
+  .card{background:var(--brush),var(--panel);border:1px solid rgba(0,0,0,.14);border-top:4px solid var(--accent);border-radius:12px;overflow:hidden;box-shadow:inset 0 1px 0 var(--hl),inset 0 -1px 0 rgba(0,0,0,.08),4px 6px 14px var(--shd)}
+  /* photo set in a bevelled frame with an inner mat */
+  .photo{display:block;width:calc(100% - 28px);margin:14px 14px 0;max-height:70vh;object-fit:contain;background:#fff;padding:8px;border-radius:6px;border:1px solid rgba(0,0,0,.25);box-shadow:inset 0 0 0 1px rgba(0,0,0,.06),inset 2px 3px 6px rgba(0,0,0,.18),0 1px 0 var(--hl),3px 4px 8px var(--shd)}
   .body{padding:18px 18px 20px}
-  h1{font-size:24px;line-height:1.25;font-weight:600}
-  dl{margin-top:12px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px}
-  dl div{display:flex;gap:10px;padding:7px 0;border-top:1px solid var(--line)}
-  dt{flex:0 0 72px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;font-size:11px;padding-top:2px}
+  h1{font-size:24px;line-height:1.25;font-weight:600;text-shadow:0 1px 0 var(--hl),0 -1px 0 rgba(0,0,0,.1)}
+  /* details as a sunken engraved plaque */
+  dl{margin-top:14px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-size:14px;border-radius:8px;padding:2px 12px;background:var(--plate);border:1px solid rgba(0,0,0,.14);box-shadow:inset 1px 2px 4px rgba(0,0,0,.16),0 1px 0 var(--hl)}
+  dl:empty{display:none}
+  dl div{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+  dl div:first-child{border-top:none}
+  dt{flex:0 0 72px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em;font-size:11px;padding-top:2px;text-shadow:0 1px 0 var(--hl)}
   dd{flex:1}
-  .note{margin-top:16px;padding:12px 14px;border-left:3px solid var(--accent);background:#9a3b2c0d;font:14px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
-  .center{text-align:center;padding:34px 22px}
-  .lock{width:46px;height:46px;margin:0 auto 14px;color:var(--accent)}
-  .msg{font-size:20px;line-height:1.45}
-  .sub{margin-top:14px;font:14px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
+  /* authentication note: raised metal plate with terracotta edge */
+  .note{margin-top:16px;padding:12px 14px;border-left:4px solid var(--accent);border-radius:0 8px 8px 0;background:var(--metal);font:14px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;border-top:1px solid rgba(0,0,0,.1);border-right:1px solid rgba(0,0,0,.1);border-bottom:1px solid rgba(0,0,0,.14);box-shadow:inset 0 1px 0 var(--hl),2px 3px 6px var(--shd-soft)}
+  .center{text-align:center;padding:30px 22px}
+  /* lock embossed in a round metal medallion */
+  .lock{width:62px;height:62px;padding:12px;margin:0 auto 16px;color:var(--accent);border-radius:50%;background:var(--metal);border:1px solid rgba(0,0,0,.2);box-shadow:inset 0 1px 0 var(--hl),inset 0 -2px 3px rgba(0,0,0,.12),3px 4px 7px var(--shd)}
+  .msg{font-size:20px;line-height:1.45;text-shadow:0 1px 0 var(--hl)}
+  .sub{margin-top:16px;font:14px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
   a{color:var(--accent)}
-  .links,footer{width:100%;max-width:560px;margin-top:22px;text-align:center;font:13px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
-  .links{max-width:560px;margin-top:16px;text-align:center;font:13px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
+  /* links as brushed-metal buttons */
+  .links a,footer a,.sub a{display:inline-block;margin:5px 4px;padding:6px 14px;border-radius:999px;text-decoration:none;font:600 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--btn);border:1px solid rgba(0,0,0,.25);text-shadow:0 1px 0 var(--hl);box-shadow:inset 0 1px 0 var(--hl),2px 3px 4px var(--shd);transition:transform .08s,box-shadow .08s,filter .12s}
+  .links a:hover,footer a:hover,.sub a:hover{filter:brightness(1.06)}
+  .links a:active,footer a:active,.sub a:active{transform:translate(1px,2px);box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}
+  .sub p a{margin:0 2px}
+  .links,footer{width:100%;max-width:560px;margin-top:18px;text-align:center;font:13px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
   .hide{display:none}
 </style>
 </head>
@@ -63,20 +87,20 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
       <div class="note">This QR code authenticates the artwork shown above only as originally documented, unaltered.<br>Suspect an alteration or discrepancy? Please report it by contacting the Foundation.</div>
     </div>
   </div>
-  <div id="iLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> &middot; <a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a> &middot; <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
+  <div id="iLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> <a href="mailto:jeankhalife.art@gmail.com">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
 
   <!-- private / unknown -->
   <div id="vPriv" class="card hide"><div class="center">
     <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
     <div class="msg">The actual Artwork QR Info is currently Private and Incomplete, kindly contact the Foundation for further info and proper Authentication issues.</div>
-    <div class="sub"><a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a> &middot; <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
+    <div class="sub"><a href="mailto:jeankhalife.art@gmail.com">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
   </div></div>
   <div id="pLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a></div>
 
   <!-- temporary problem -->
   <div id="vErr" class="card hide"><div class="center">
     <div class="msg">Unable to load this page right now.</div>
-    <div class="sub">Please check your internet connection and scan again, or contact the Foundation at <a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a>.</div>
+    <div class="sub">Please check your internet connection and scan again, or contact the Foundation:</div><div class="sub"><a href="mailto:jeankhalife.art@gmail.com">Email us</a></div>
   </div></div>
 
   <!-- opened without a QR code -->
@@ -84,7 +108,7 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
     <div class="msg">Scan the QR code on an artwork to see its information.</div>
   </div></div>
 </main>
-<footer id="fLinks" class="hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> &middot; <a href="mailto:jeankhalife.art@gmail.com">jeankhalife.art@gmail.com</a> &middot; <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></footer>
+<footer id="fLinks" class="hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> <a href="mailto:jeankhalife.art@gmail.com">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></footer>
 <script>
 (function(){
   var $=function(id){return document.getElementById(id);};
