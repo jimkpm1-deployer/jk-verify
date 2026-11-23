@@ -77,6 +77,17 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
   .links a:active,footer a:active,.sub a:active{transform:translate(1px,2px);box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}
   .sub p a{margin:0 2px}
   .links,footer{width:100%;max-width:560px;margin-top:18px;text-align:center;font:13px/1.8 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--mute)}
+  .langs{display:flex;justify-content:flex-end;gap:8px;margin:0 2px 10px}
+  .langs button{cursor:pointer;min-width:52px;padding:6px 12px;border-radius:999px;font:600 13px/1.2 system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;color:var(--ink);background:var(--btn);border:1px solid rgba(0,0,0,.25);text-shadow:0 1px 0 var(--hl);box-shadow:inset 0 1px 0 var(--hl),2px 3px 4px var(--shd);transition:transform .08s,box-shadow .08s}
+  .langs button:active{transform:translate(1px,2px);box-shadow:inset 0 2px 4px rgba(0,0,0,.3)}
+  .langs button[aria-pressed="true"]{background:var(--brass);color:var(--brass-ink);text-shadow:0 1px 0 rgba(255,255,255,.35)}
+  .langs.hide{display:none}
+  [dir="rtl"]{text-align:right;font-family:"Geeza Pro","Noto Naskh Arabic","Noto Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif}
+  .center [dir="rtl"]{text-align:center}
+  .note[dir="rtl"]{border-left:1px solid rgba(0,0,0,.1);border-right:4px solid var(--bronze);border-radius:8px 0 0 8px}
+  .note[dir="rtl"] ul{margin:4px 18px 0 0}
+  .msg[dir="rtl"]{font-size:21px;line-height:1.7}
+  dl[dir="rtl"] dt{letter-spacing:0;font-size:13px}
   .hide{display:none}
 </style>
 </head>
@@ -87,46 +98,119 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
   <div class="nm">Foundation</div></div>
 </header>
 <main>
+  <div id="langBar" class="langs hide" role="group" aria-label="Language"><button type="button" data-l="en" lang="en">EN</button><button type="button" data-l="fr" lang="fr">FR</button><button type="button" data-l="ar" lang="ar">عربي</button></div>
   <!-- loading -->
-  <div id="vLoad" class="card"><div class="center"><div class="sub">Loading…</div></div></div>
+  <div id="vLoad" class="card"><div class="center"><div class="sub" data-i="load">Loading…</div></div></div>
 
   <!-- public item -->
   <div id="vItem" class="card hide">
     <img id="iPhoto" class="photo hide" alt="">
     <div class="body">
       <h1 id="iTitle"></h1>
-      <dl id="iMeta"></dl>
-      <div class="note"><p class="notcert">This is Not the Certificate</p><p><strong>Electronic verification only.</strong> This QR code is registered by the Jean Khalifé Foundation for the artwork shown above, as originally documented. It is not a Certificate of Authenticity and does not replace the printed certificate.</p><p>Authenticity requires both:</p><ul><li>the QR codes on the printed certificate and on the back of the painting open this same page;</li><li>the painting matches the photos on the certificate and above, with no alteration, overpainting or restoration changing its original appearance.</li></ul><p>Suspect an alteration or discrepancy? Missing COA? Please contact the Foundation.</p></div>
+      <dl id="iMeta" class="tr"></dl>
+      <div class="note tr"><p class="notcert" data-i="notcert">This is Not the Certificate</p><p data-i="p1"><strong>Electronic verification only.</strong> This QR code is registered by the Jean Khalifé Foundation for the artwork shown above, as originally documented. It is not a Certificate of Authenticity and does not replace the printed certificate.</p><p data-i="req">Authenticity requires both:</p><ul><li data-i="li1">the QR codes on the printed certificate and on the back of the painting open this same page;</li><li data-i="li2">the painting matches the photos on the certificate and above, with no alteration, overpainting or restoration changing its original appearance.</li></ul><p data-i="susp">Suspect an alteration or discrepancy? Missing COA? Please contact the Foundation.</p></div>
     </div>
   </div>
-  <div id="iLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> <a href="mailto:jeankhalife.art@gmail.com">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
+  <div id="iLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> <a href="mailto:jeankhalife.art@gmail.com" data-i="email">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
 
   <!-- private / unknown -->
   <div id="vPriv" class="card hide"><div class="center">
     <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10.5" width="16" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>
-    <div class="msg">This Artwork QR scan cannot be actually verified. Kindly contact the Foundation for further info and proper Authentication procedure.</div>
-    <div class="sub"><a href="mailto:jeankhalife.art@gmail.com">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
+    <div class="msg tr" data-i="priv">This Artwork QR scan cannot be actually verified. Kindly contact the Foundation for further info and proper Authentication procedure.</div>
+    <div class="sub"><a href="mailto:jeankhalife.art@gmail.com" data-i="email">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></div>
   </div></div>
   <div id="pLinks" class="links hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a></div>
 
   <!-- temporary problem -->
   <div id="vErr" class="card hide"><div class="center">
-    <div class="msg">Unable to load this page right now.</div>
-    <div class="sub">Please check your internet connection and scan again, or contact the Foundation:</div><div class="sub"><a href="mailto:jeankhalife.art@gmail.com">Email us</a></div>
+    <div class="msg tr" data-i="err1">Unable to load this page right now.</div>
+    <div class="sub tr" data-i="err2">Please check your internet connection and scan again, or contact the Foundation:</div><div class="sub"><a href="mailto:jeankhalife.art@gmail.com" data-i="email">Email us</a></div>
   </div></div>
 
   <!-- opened without a QR code -->
   <div id="vHome" class="card hide"><div class="center">
-    <div class="msg">Scan the QR code on an artwork to see its information.</div>
+    <div class="msg tr" data-i="home">Scan the QR code on an artwork to see its information.</div>
   </div></div>
 </main>
-<footer id="fLinks" class="hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> <a href="mailto:jeankhalife.art@gmail.com">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></footer>
+<footer id="fLinks" class="hide"><a href="https://jeankhalife.com" rel="noopener">jeankhalife.com</a> <a href="mailto:jeankhalife.art@gmail.com" data-i="email">Email us</a> <a href="https://www.instagram.com/jeankhalife_art/" rel="noopener">Instagram</a></footer>
 <script>
 (function(){
   var $=function(id){return document.getElementById(id);};
+
+  var T={
+    en:{notcert:"This is Not the Certificate",
+      p1:"<strong>Electronic verification only.</strong> This QR code is registered by the Jean Khalifé Foundation for the artwork shown above, as originally documented. It is not a Certificate of Authenticity and does not replace the printed certificate.",
+      req:"Authenticity requires both:",
+      li1:"the QR codes on the printed certificate and on the back of the painting open this same page;",
+      li2:"the painting matches the photos on the certificate and above, with no alteration, overpainting or restoration changing its original appearance.",
+      susp:"Suspect an alteration or discrepancy? Missing COA? Please contact the Foundation.",
+      priv:"This Artwork QR scan cannot be actually verified. Kindly contact the Foundation for further info and proper Authentication procedure.",
+      year:"Year",medium:"Medium",size:"Size",email:"Email us",load:"Loading…",
+      err1:"Unable to load this page right now.",err2:"Please check your internet connection and scan again, or contact the Foundation:",
+      home:"Scan the QR code on an artwork to see its information."},
+    fr:{notcert:"Ceci n’est pas le certificat",
+      p1:"<strong>Vérification électronique uniquement.</strong> Ce code QR est enregistré par la Fondation Jean Khalifé pour l’œuvre présentée ci-dessus, telle que documentée à l’origine. Il ne constitue pas un certificat d’authenticité et ne remplace pas le certificat imprimé.",
+      req:"L’authenticité exige les deux conditions suivantes :",
+      li1:"les codes QR figurant sur le certificat imprimé et au dos du tableau ouvrent cette même page ;",
+      li2:"le tableau correspond aux photos du certificat et à celle ci-dessus, sans altération, repeint ni restauration modifiant son aspect d’origine.",
+      susp:"Vous soupçonnez une altération ou une incohérence ? Certificat manquant ? Veuillez contacter la Fondation.",
+      priv:"Ce code QR ne peut pas être vérifié actuellement. Veuillez contacter la Fondation pour plus d’informations et pour la procédure d’authentification appropriée.",
+      year:"Année",medium:"Medium",size:"Dimensions",email:"Nous écrire",load:"Chargement…",
+      err1:"Impossible de charger cette page pour le moment.",err2:"Veuillez vérifier votre connexion internet et scanner à nouveau, ou contacter la Fondation :",
+      home:"Scannez le code QR d’une œuvre pour afficher ses informations."},
+    ar:{notcert:"هذه ليست شهادة الأصالة",
+      p1:"<strong>تحقّق إلكتروني فقط.</strong> رمز QR هذا مسجّل لدى مؤسسة جان خليفة للعمل الفني المعروض أعلاه، كما وُثّق في الأصل. وهو ليس شهادة أصالة ولا يحلّ محلّ الشهادة المطبوعة.",
+      req:"تتطلّب الأصالة الشرطين التاليين معاً:",
+      li1:"أن يفتح رمزا QR الموجودان على الشهادة المطبوعة وعلى ظهر اللوحة هذه الصفحة نفسها؛",
+      li2:"أن تطابق اللوحة الصور الموجودة على الشهادة والصورة أعلاه، من دون أيّ تعديل أو طلاء إضافي أو ترميم يغيّر مظهرها الأصلي.",
+      susp:"هل تشكّ في وجود تعديل أو تناقض؟ هل الشهادة مفقودة؟ يُرجى التواصل مع المؤسسة.",
+      priv:"لا يمكن التحقق من رمز QR لهذا العمل الفني حالياً. يُرجى التواصل مع المؤسسة لمزيد من المعلومات ولإجراءات التوثيق المناسبة.",
+      year:"السنة",medium:"التقنية",size:"القياسات",email:"راسلنا",load:"جارٍ التحميل…",
+      err1:"تعذّر تحميل هذه الصفحة حالياً.",err2:"يُرجى التحقق من اتصالك بالإنترنت وإعادة المسح، أو التواصل مع المؤسسة:",
+      home:"امسح رمز QR الموجود على العمل الفني لعرض معلوماته."}
+  };
+  // Medium names with a known translation; anything else is shown as written in English
+  var MED={
+    "oil on canvas":["Huile sur toile","زيت على قماش"],
+    "oil on board":["Huile sur panneau","زيت على لوح"],
+    "oil on panel":["Huile sur panneau","زيت على لوح"],
+    "oil on wood":["Huile sur bois","زيت على خشب"],
+    "oil on paper":["Huile sur papier","زيت على ورق"],
+    "oil on cardboard":["Huile sur carton","زيت على كرتون"],
+    "acrylic on canvas":["Acrylique sur toile","أكريليك على قماش"],
+    "acrylic on paper":["Acrylique sur papier","أكريليك على ورق"],
+    "acrylic on board":["Acrylique sur panneau","أكريليك على لوح"],
+    "gouache on paper":["Gouache sur papier","غواش على ورق"],
+    "gouache":["Gouache","غواش"],
+    "watercolor on paper":["Aquarelle sur papier","ألوان مائية على ورق"],
+    "watercolour on paper":["Aquarelle sur papier","ألوان مائية على ورق"],
+    "watercolor":["Aquarelle","ألوان مائية"],
+    "ink on paper":["Encre sur papier","حبر على ورق"],
+    "pastel on paper":["Pastel sur papier","باستيل على ورق"],
+    "charcoal on paper":["Fusain sur papier","فحم على ورق"],
+    "pencil on paper":["Crayon sur papier","قلم رصاص على ورق"],
+    "mixed media":["Technique mixte","تقنية مختلطة"],
+    "mixed media on canvas":["Technique mixte sur toile","تقنية مختلطة على قماش"],
+    "mixed media on paper":["Technique mixte sur papier","تقنية مختلطة على ورق"],
+    "mixed media on board":["Technique mixte sur panneau","تقنية مختلطة على لوح"],
+    "collage":["Collage","كولاج"]
+  };
+  var lang="en";
+  try{var sv=localStorage.getItem("jkv_lang");if(sv==="en"||sv==="fr"||sv==="ar")lang=sv;else{var nl=(navigator.language||"").toLowerCase();if(nl.indexOf("fr")===0)lang="fr";else if(nl.indexOf("ar")===0)lang="ar";}}catch(e){}
+  function medTxt(v){var m=MED[String(v||"").trim().toLowerCase().replace(/\s+/g," ")];return m&&lang!=="en"?m[lang==="fr"?0:1]:v;}
+  function applyLang(){
+    var t=T[lang];
+    [].forEach.call(document.querySelectorAll("[data-i]"),function(el){var k=el.getAttribute("data-i");if(t[k]!=null)el.innerHTML=t[k];});
+    [].forEach.call(document.querySelectorAll(".tr"),function(el){el.setAttribute("dir",lang==="ar"?"rtl":"ltr");el.setAttribute("lang",lang);});
+    [].forEach.call(document.querySelectorAll("[data-med]"),function(el){el.textContent=medTxt(el.getAttribute("data-med"));});
+    [].forEach.call(document.querySelectorAll("#langBar button"),function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===lang?"true":"false");});
+  }
+  [].forEach.call(document.querySelectorAll("#langBar button"),function(b){b.addEventListener("click",function(){lang=b.getAttribute("data-l");try{localStorage.setItem("jkv_lang",lang);}catch(e){}applyLang();});});
+  applyLang();
   function show(id){["vLoad","vItem","vPriv","vErr","vHome"].forEach(function(x){$(x).classList.toggle("hide",x!==id);});
     $("iLinks").classList.toggle("hide",id!=="vItem");
     $("pLinks").classList.toggle("hide",id!=="vPriv");
+    $("langBar").classList.toggle("hide",id!=="vItem"&&id!=="vPriv");
     $("fLinks").classList.toggle("hide",id!=="vErr"&&id!=="vHome");
     var res={vItem:"public",vPriv:"private",vErr:"error",vHome:"home"}[id];
     if(res){try{gtag("event","qr_scan",{qr_code:code||"(none)",result:res,item_title:(res==="public"?itemTitle:"").slice(0,100),item_medium:(res==="public"&&itemMeta.medium?String(itemMeta.medium):"").slice(0,100),item_size:(res==="public"&&itemMeta.size?String(itemMeta.size):"").slice(0,100),item_year:(res==="public"&&itemMeta.year?String(itemMeta.year):"").slice(0,100),page_location:location.origin+location.pathname});}catch(e){}}}
@@ -144,11 +228,14 @@ gtag("config","G-K7NVS656PR",{send_page_view:false});
     itemTitle=String(d.title);itemMeta={year:d.year,medium:d.medium,size:d.size};
     $("iTitle").textContent=d.title;
     document.title=d.title+" — Jean Khalifé Foundation";
-    var rows=[["Year",d.year],["Medium",d.medium],["Size",d.size]],meta=$("iMeta");
+    var rows=[["year",d.year],["medium",d.medium],["size",d.size]],meta=$("iMeta");
     rows.forEach(function(r){
       if(!r[1])return;
       var row=document.createElement("div"),dt=document.createElement("dt"),dd=document.createElement("dd");
-      dt.textContent=r[0];dd.textContent=r[1];row.appendChild(dt);row.appendChild(dd);meta.appendChild(row);
+      dt.setAttribute("data-i",r[0]);dt.textContent=T[lang][r[0]];
+      if(r[0]==="medium"){dd.setAttribute("data-med",String(r[1]));dd.textContent=medTxt(r[1]);}
+      else{dd.textContent=r[1];dd.setAttribute("dir","ltr");dd.style.unicodeBidi="isolate";dd.style.textAlign="inherit";}
+      row.appendChild(dt);row.appendChild(dd);meta.appendChild(row);
     });
     var im=$("iPhoto");
     if(d.photo&&/^photos\/[a-z0-9]+\.jpg$/.test(d.photo)){
